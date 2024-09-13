@@ -28,13 +28,21 @@
     </div>
 </template>
 <script>
+import { inject } from 'vue';
+
 
 export default {
     mounted() {
         this.obtenerProducto()
     },
+    setup(){
+        const api = inject('urlApi')
+        return { api }
+    },
     methods:{
         async obtenerProducto() {
+            
+
             const idProducto = this.$route.query.id
             console.log(idProducto)
 
@@ -43,9 +51,10 @@ export default {
                 this.$router.push('/')
             
             }
-
+            console.log(this.api)
             try{
-                const response = await fetch(`http://localhost:8080/productos/${idProducto}`)
+
+                const response = await fetch(`${this.api}/productos/${idProducto}`)
 
                 if (!response.ok) {
                     const statusCode = response.status;
@@ -115,7 +124,7 @@ export default {
             }
 
             try{
-                const response = await fetch(`http://localhost:8080/productos/${id}`,{
+                const response = await fetch(`${this.api}/productos/${id}`,{
                     method:'PUT',
                     headers:{
                         'Content-Type': 'application/json', 

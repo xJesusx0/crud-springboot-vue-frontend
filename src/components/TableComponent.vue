@@ -22,10 +22,16 @@
 </template>
 
 <script>
+import { inject } from 'vue';
+
 export default {
 	mounted() {
 		this.obtenerProductos()
 	},
+	setup(){
+        const api = inject('urlApi')
+        return { api }
+    },
 	data() {
 		return {
 			tableHeaders : [
@@ -35,8 +41,9 @@ export default {
 	},	
 	methods: {
 		async obtenerProductos() {
+			console.log(this.api)
 			try {
-				const response = await fetch('http://localhost:8080/productos')
+				const response = await fetch(`${this.api}/productos`)
 				if (!response.ok) {
 					throw new Error(response.statusText)
 				}
@@ -95,7 +102,7 @@ export default {
 			console.log(id)
 
 			try{
-				const response = await fetch(`http://localhost:8080/productos/${id}`,{
+				const response = await fetch(`${this.api}/productos/${id}`,{
 					method:'DELETE'
 				})
 

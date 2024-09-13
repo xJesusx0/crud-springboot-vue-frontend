@@ -4,7 +4,7 @@ Aplicación web para realizar operaciones CRUD (crear,leer,actualizar y eliminar
 
 ## Poner en marcha el proyecto
 
-1. Asegurate que la api de SpringBoot esta corriendo en el puerto 8080
+1. Asegurate que la api de SpringBoot esta corriendo en el puerto 8080 o en el puerto que hayas configurado
 
 2. Clonar el repositorio
 ```sh
@@ -23,6 +23,13 @@ npm install
 
 > [!WARNING]
 > Asegurate de estar usando la ultima version de NodeJs o una que sea compatible con vue3
+
+> [!WARNING]
+> En caso de que tu api este corriendo en un puerto diferente al 8080 modifica el archivo src/main.js
+
+```javascript
+const urlApi = 'http://localhost:8080' // aqui puedes cambiar el puerto
+```
 
 5. Compilar e iniciar el servidor de desarrollo
 ```sh

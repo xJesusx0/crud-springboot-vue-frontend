@@ -19,11 +19,14 @@ const routes = [
     {path:'/agregar-producto', component : AddProduct}
 ]
 
+const urlApi = 'http://localhost:8080'
+
 const router = createRouter({
     history: createWebHashHistory(),
     routes
 })
 
 const app = createApp(App)
+app.provide('urlApi',urlApi)
 app.use(router)
 app.mount('#app')
