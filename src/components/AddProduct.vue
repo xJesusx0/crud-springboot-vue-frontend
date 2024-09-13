@@ -24,7 +24,13 @@
 
 
 <script>
+import { inject } from 'vue';
+
 export default {
+	setup(){
+        const api = inject('urlApi')
+        return { api }
+    },
     methods: {
         async agregarProducto() {
 
@@ -56,7 +62,7 @@ export default {
             console.log(producto)
 
             try{
-                const response = await fetch('http://localhost:8080/productos',{
+                const response = await fetch(`${this.api}/productos`,{
                     method:'POST',
                     headers:{
                         'Content-Type': 'application/json', 
