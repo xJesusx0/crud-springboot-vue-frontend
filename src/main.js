@@ -9,13 +9,13 @@ import { createWebHashHistory } from 'vue-router'
 
 import App from './App.vue'
 import TableComponent from './components/TableComponent.vue'
-import ProductComponent from './components/ProductComponent.vue'
 import AddProduct from './components/AddProduct.vue'
+import EditProduct from './components/EditProduct.vue'
 
 // rutas
 const routes = [
     {path:'/', component : TableComponent},
-    {path:'/producto', component : ProductComponent},
+    {path:'/editar-producto', component : EditProduct},
     {path:'/agregar-producto', component : AddProduct}
 ]
 
