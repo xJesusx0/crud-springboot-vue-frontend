@@ -103,6 +103,11 @@ export default {
                 return
             }
 
+            if(!cantidad || !precio){
+                alert('Por favor completa todos los campos')
+                return
+            }
+
             const producto = {
                 nombre:nombre,
                 precio:precio,
