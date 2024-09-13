@@ -16,7 +16,7 @@ import AddProduct from './components/AddProduct.vue'
 const routes = [
     {path:'/', component : TableComponent},
     {path:'/producto', component : ProductComponent},
-    {path:'/crear-producto', component : AddProduct}
+    {path:'/agregar-producto', component : AddProduct}
 ]
 
 const router = createRouter({
