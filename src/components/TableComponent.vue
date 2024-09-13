@@ -73,7 +73,7 @@ export default {
 					const botonEditar = document.createElement('button')
 					botonEditar.innerText = 'Editar producto'
 					botonEditar.classList.add('btn','btn-warning')
-					botonEditar.addEventListener('click', () => this.redirigir())
+					botonEditar.addEventListener('click', () => this.redirigir(producto.id))
 					acciones.appendChild(botonEditar)
 
 					const botonEliminar = document.createElement('button')
@@ -114,8 +114,8 @@ export default {
 			}
 
 		},
-		redirigir () {
-			this.$router.push('/editar-producto')
+		redirigir (id) {
+			this.$router.push(`/editar-producto?id=${id}`)
 		}
 
 	}
