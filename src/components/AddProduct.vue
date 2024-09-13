@@ -17,11 +17,8 @@
                 <label for="precioProducto">Precio</label>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-3" :disabled="isSubmitting">
-                <span v-if="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                {{ isSubmitting ? 'Agregando...' : 'Agregar Producto' }}
-            </button>
         </form>
+        <button type="button" class="btn btn-primary mt-3" @click="agregarProducto">Agregar producto</button>
     </div>
 </template>
 
@@ -74,8 +71,14 @@ export default {
                 const data = await response.json()
 
                 alert(data.message)
+
+                if(data.success){
+                   this.$router.push('/') 
+                }
+
             } catch(error){
                 console.error(error)
+                alert('Ha ocurrido un error durante el proceso')
             }
 
         }
