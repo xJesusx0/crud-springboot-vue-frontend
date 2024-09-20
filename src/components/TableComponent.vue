@@ -22,16 +22,13 @@
 </template>
 
 <script>
-import { inject } from 'vue';
+import { request } from '@/Request'
+import { validateSession } from '@/validSession';
 
 export default {
 	mounted() {
 		this.obtenerProductos()
 	},
-	setup(){
-        const api = inject('urlApi')
-        return { api }
-    },
 	data() {
 		return {
 			tableHeaders : [
@@ -41,12 +38,11 @@ export default {
 	},	
 	methods: {
 		async obtenerProductos() {
-			console.log(this.api)
-			try {
-				const response = await fetch(`${this.api}/productos`)
-				if (!response.ok) {
-					throw new Error(response.statusText)
-				}
+			
+				const response = await request('/productos','GET')
+
+				validateSession(response,this.$router)
+
 				const data = await response.json()
 
 				const tableBody = document.getElementById('table-body')
@@ -93,23 +89,14 @@ export default {
 
 					tableBody.appendChild(tr)
 				})
-
-			} catch (error) {
-				console.error(error)
-			}
 		},
 		async eliminar(id) {
 			console.log(id)
 
 			try{
-				const response = await fetch(`${this.api}/productos/${id}`,{
-					method:'DELETE'
-				})
+				const response = await request(`/productos/${id}`,'DELETE')
 
-				if(!response.ok){
-					throw new Error(response.statusText)
-				}
-
+				validateSession(response,this.$router)
 				const data = await response.json()
 
 				alert(data.message)
