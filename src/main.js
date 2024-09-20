@@ -23,6 +23,8 @@ const routes = [
 
 const urlApi = 'http://localhost:8080'
 
+export { urlApi }
+
 const router = createRouter({
     history: createWebHashHistory(),
     routes
